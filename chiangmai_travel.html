@@ -115,9 +115,14 @@
                     </button>
                     <span class="ml-3 font-bold text-lg">치앙마이 여행</span>
                 </div>
-                <div class="hidden md:block text-sm text-gray-500 dark:text-gray-400">
-                    <i class="fa-regular fa-clock mr-1"></i> <span id="current-time"></span>
+                
+                <!-- 실시간 시계 영역 (한국/태국) -->
+                <div class="hidden md:flex items-center text-sm bg-gray-100 dark:bg-gray-700 px-4 py-1.5 rounded-full shadow-inner">
+                    <span id="current-time-display" class="flex items-center gap-4 text-gray-700 dark:text-gray-200 font-medium">
+                        <!-- JS로 시간 주입 -->
+                    </span>
                 </div>
+
                 <div class="flex items-center space-x-4">
                     <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-yellow-400 focus:outline-none transition transform hover:scale-110">
                         <i class="fa-solid fa-moon dark:hidden"></i>
@@ -285,7 +290,8 @@
 
                         <!-- Dynamic Display Card -->
                         <div class="relative rounded-lg overflow-hidden shadow-xl h-80 md:h-96 group">
-                            <img id="attraction-img" src="https://images.unsplash.com/photo-1587033503862-e1c8d8b92b6c?q=80&w=1200&auto=format&fit=crop" alt="Attraction Image" class="w-full h-full object-cover transition-opacity duration-500">
+                            <!-- [수정됨] 초기 로딩 이미지 (왓 체디 루앙 정면) -->
+                            <img id="attraction-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Wat_Chedi_Luang_Worawihan_05.jpg/1200px-Wat_Chedi_Luang_Worawihan_05.jpg" alt="Attraction Image" class="w-full h-full object-cover transition-opacity duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
                                 <h3 id="attraction-title" class="text-3xl font-bold text-white mb-3">왓 체디 루앙 (Wat Chedi Luang)</h3>
                                 <p id="attraction-desc" class="text-gray-100 text-sm md:text-base leading-relaxed">
@@ -555,10 +561,23 @@
     </div>
 
     <script>
-        // 1. Time Update
+        // 1. Time Update (Dual Clocks)
         function updateTime() {
             const now = new Date();
-            document.getElementById('current-time').innerText = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+            const dateOptions = { month: 'numeric', day: 'numeric', weekday: 'short' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+
+            const dateStr = now.toLocaleDateString('ko-KR', dateOptions);
+            const krTime = now.toLocaleTimeString('ko-KR', { ...timeOptions, timeZone: 'Asia/Seoul' });
+            const thTime = now.toLocaleTimeString('ko-KR', { ...timeOptions, timeZone: 'Asia/Bangkok' });
+
+            const html = `
+                <span class="mr-1 text-gray-400 text-xs hidden lg:inline">${dateStr}</span>
+                <span class="text-brand-dark dark:text-brand-light font-bold">🇰🇷 서울 ${krTime}</span>
+                <span class="mx-2 text-gray-300">|</span>
+                <span class="font-bold">🇹🇭 치앙마이 ${thTime}</span>
+            `;
+            document.getElementById('current-time-display').innerHTML = html;
         }
         setInterval(updateTime, 1000);
         updateTime();
@@ -598,7 +617,8 @@
             'chedi': {
                 title: '왓 체디 루앙 (Wat Chedi Luang)',
                 desc: '‘크다’는 뜻의 이름답게 과거 거대한 불탑의 자취가 남아 있으며, 현재 일부가 유실되었음에도 불구하고 그 압도적인 건축미는 치앙마이에서 가장 상징적인 볼거리로 손꼽힙니다.',
-                img: 'https://images.unsplash.com/photo-1587033503862-e1c8d8b92b6c?q=80&w=1200&auto=format&fit=crop'
+                // [수정됨] 사용자 제공 이미지와 유사한 고화질 정면 사진 URL
+                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Wat_Chedi_Luang_Worawihan_05.jpg/1200px-Wat_Chedi_Luang_Worawihan_05.jpg'
             },
             'phrasingh': {
                 title: '왓 프라씽 (Wat Phra Singh)',
