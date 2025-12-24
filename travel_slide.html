@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>치앙마이 여행 가이드 슬라이드</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css" id="theme">
+
+    <!-- Tailwind CSS (Layout Utility) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Glassmorphism Design System */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --blur: blur(10px);
+            --text-color: #ffffff;
+            --accent-color: #4ade80; /* Green */
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1598935858831-ef7883259dd1?q=80&w=1920&auto=format&fit=crop'); /* Doi Inthanon Bg */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Noto Sans KR', sans-serif !important;
+        }
+
+        /* Overlay to darken background for better readability */
+        .reveal-viewport {
+            background: rgba(15, 23, 42, 0.7) !important; 
+        }
+
+        /* Slide Container */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+            padding: 40px;
+            text-align: left;
+            color: var(--text-color);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Typography Override per Request */
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 24pt !important;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-transform: none;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .reveal p, .reveal li, .reveal td, .reveal th, .reveal div {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 17pt !important;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        /* Table Styling */
+        .reveal table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 17pt;
+        }
+        .reveal th {
+            border-bottom: 2px solid var(--accent-color);
+            text-align: left;
+            padding: 10px;
+        }
+        .reveal td {
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 10px;
+        }
+
+        /* Utility */
+        .flex-row { display: flex; gap: 20px; }
+        .col-half { flex: 1; }
+        .icon-bullet { color: var(--accent-color); margin-right: 10px; width: 25px; text-align: center; display: inline-block; }
+        
+        /* Highlight specific for this slide deck */
+        strong { color: #ffffff; font-weight: 600; }
+        .fragment.visible { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Intro -->
+            <section>
+                <div class="glass-card">
+                    <h2 class="flex items-center"><i class="fa-solid fa-plane-departure mr-3"></i> [1/20] 태국 북부의 보석, 치앙마이 개요</h2>
+                    <ul>
+                        <li class="fragment"><span class="icon-bullet"><i class="fa-solid fa-city"></i></span><strong>태국 제2의 도시:</strong> 북부 문화의 중심지, 방콕에서 700km 북쪽 위치.</li>
+                        <li class="fragment"><span class="icon-bullet"><i class="fa-solid fa-landmark"></i></span><strong>란나 왕국의 역사:</strong> 1296년 건립, 독자적인 예술과 건축 양식 발전.</li>
+                        <li class="fragment"><span class="icon-bullet"><i class="fa-solid fa-laptop-code"></i></span><strong>디지털 노마드의 성지:</strong> 저렴한 물가, 현대적 편의시설, 평화로운 일상.</li>
+                        <li class="fragment"><span class="icon-bullet"><i class="fa-solid fa-palette"></i></span><strong>예술과 수공예:</strong> 우산 제작, 목조 공예 등 장인 정신이 살아있는 도시.</li>
+                        <li class="fragment"><span class="icon-bullet"><i class="fa-solid fa-users"></i></span><strong>글로벌 관광 명소:</strong> 연간 100만 명 이상 방문, 현대와 전통의 공존.</li>
+                    </ul>
+                    <p class="mt-4 text-gray-300 italic fragment">"그저 삶을 살러 오는 곳" - 고즈넉함과 세련미가 공존하는 힐링의 도시.</p>
+                </div>
+            </section>
+
+            <!-- Slide 2: History -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-book-open mr-3"></i> [2/20] 역사적 배경과 란나 문화</h2>
+                    <div class="flex-row">
+                        <div class="col-half">
+                            <ul>
+                                <li class="fragment"><strong>1296년 도시 건설:</strong> 멩라이 왕이 세운 란나 왕국의 수도.</li>
+                                <li class="fragment"><strong>방어형 도시:</strong> 버마의 위협에 대비해 해자와 성벽 구축.</li>
+                                <li class="fragment"><strong>불교 예술의 정점:</strong> 14~15세기 황금기, 주요 사원들 건설.</li>
+                            </ul>
+                        </div>
+                        <div class="col-half">
+                            <ul>
+                                <li class="fragment"><strong>버마 지배와 회복:</strong> 16세기부터 지배받았으나 18세기 후반 수복.</li>
+                                <li class="fragment"><strong>현대화와 보존:</strong> 20세기 태국 통합 후에도 고유 언어와 문화 유지.</li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-white/10 rounded fragment">
+                                <p class="text-sm">현재 올드 시티의 성벽 유적은 전쟁과 재건의 역사를 증명합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Weather (Chart) -->
+            <section data-state="loadChart">
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-cloud-sun-rain mr-3"></i> [3/20] 여행 시기와 기후</h2>
+                    <div class="flex-row items-center">
+                        <div class="col-half">
+                            <ul>
+                                <li><strong>건기 (11~2월):</strong> 여행 황금기, 쾌적한 날씨.</li>
+                                <li><strong>혹서기 (3~5월):</strong> 최고 40도 육박, 자외선 주의.</li>
+                                <li><strong>우기 (6~10월):</strong> 스콜성 비, 푸른 자연 경관.</li>
+                            </ul>
+                        </div>
+                        <div class="col-half" style="height: 300px;">
+                            <canvas id="weatherChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Transport -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-van-shuttle mr-3"></i> [4/20] 항공권 및 교통수단</h2>
+                    <table class="fragment">
+                        <thead>
+                            <tr>
+                                <th>수단</th>
+                                <th>특징</th>
+                                <th>팁</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>썽태우</strong></td>
+                                <td>트럭 개조 합승, 10~15명 탑승</td>
+                                <td>치앙마이의 상징, 저렴함</td>
+                            </tr>
+                            <tr>
+                                <td><strong>뚝뚝</strong></td>
+                                <td>3륜 오토바이 택시</td>
+                                <td>탑승 전 가격 흥정 필수</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grab</strong></td>
+                                <td>차량 호출 앱, 정찰제</td>
+                                <td>가장 안전하고 편리함</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-4 fragment"><i class="fa-solid fa-plane"></i> 인천발 직항 약 5시간 30분, 공항과 시내 거리 4km로 매우 가까움.</p>
+                </div>
+            </section>
+
+            <!-- Slide 5: Preparation -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-suitcase-rolling mr-3"></i> [5/20] 필수 준비물 체크리스트</h2>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="fragment p-3 border border-white/20 rounded">
+                            <i class="fa-solid fa-sim-card text-green-400 mb-2"></i><br>
+                            <strong>eSIM/유심</strong><br>지도 및 그랩 사용 필수
+                        </div>
+                        <div class="fragment p-3 border border-white/20 rounded">
+                            <i class="fa-solid fa-spray-can text-green-400 mb-2"></i><br>
+                            <strong>모기 기피제</strong><br>열대 기후와 숲 대비
+                        </div>
+                        <div class="fragment p-3 border border-white/20 rounded">
+                            <i class="fa-solid fa-shirt text-green-400 mb-2"></i><br>
+                            <strong>단정한 복장</strong><br>사원 방문 시 노출 자제
+                        </div>
+                        <div class="fragment p-3 border border-white/20 rounded">
+                            <i class="fa-solid fa-pump-soap text-green-400 mb-2"></i><br>
+                            <strong>샤워 필터</strong><br>피부가 예민하다면 추천
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Temples -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-gopuram mr-3"></i> [6/20] 올드 시티 3대 사원</h2>
+                    <ul>
+                        <li class="fragment">
+                            <strong>왓 체디 루앙:</strong> '크다'는 뜻. 거대한 대탑의 자취가 남은 웅장한 사원.
+                        </li>
+                        <li class="fragment">
+                            <strong>왓 치앙만:</strong> 가장 오래된 사원. 코끼리가 탑을 받치고 있는 사리탑이 특징.
+                        </li>
+                        <li class="fragment">
+                            <strong>왓 프라씽:</strong> 화려한 황금빛 사원. 란나 건축 양식의 정수를 보여줌.
+                        </li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-blue-500/20 rounded fragment">
+                        <p class="text-sm"><i class="fa-solid fa-circle-info"></i> 사원은 지역의 역사와 예술을 배우는 야외 박물관 역할을 합니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Doi Suthep -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-mountain-sun mr-3"></i> [7/20] 도이수텝 사원</h2>
+                    <div class="flex-row">
+                        <div class="col-half">
+                            <img src="https://images.unsplash.com/photo-1594220793676-e260938f36c5?q=80&w=400&auto=format&fit=crop" class="rounded-lg border border-white/30">
+                        </div>
+                        <div class="col-half">
+                            <ul>
+                                <li class="fragment">해발 1,676m 정상에 위치, 시내 전경 조망.</li>
+                                <li class="fragment">309개의 계단을 오르는 수행과 성취감.</li>
+                                <li class="fragment">황금 사리탑과 주변의 종을 치며 소원 빌기.</li>
+                                <li class="fragment text-yellow-300">Tip: 야경 투어로 방문하면 황금빛과 도시의 불빛이 장관.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Activities -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-paw mr-3"></i> [8/20] 동물 교감과 체험 투어</h2>
+                    <ul>
+                        <li class="fragment"><strong>코끼리 보호소:</strong> 타는 것이 아닌, 먹이 주기와 목욕 등 윤리적 교감.</li>
+                        <li class="fragment"><strong>나이트 사파리:</strong> 트램을 타고 야행성 동물을 관찰하는 이색 체험.</li>
+                        <li class="fragment"><strong>쿠킹 클래스:</strong> 시장 장보기부터 팟타이, 커리 등 요리 직접 만들기.</li>
+                        <li class="fragment"><strong>전통 의상 체험:</strong> 란나 스타일 의상을 입고 고대 사원에서 인생샷.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Slide 9: Doi Inthanon -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-tree mr-3"></i> [9/20] 도이 인타논 국립공원</h2>
+                    <ul>
+                        <li class="fragment"><strong>태국 최고봉:</strong> 해발 2,565m, '태국의 지붕'이라 불림.</li>
+                        <li class="fragment"><strong>장수 기념탑:</strong> 국왕과 왕비를 기념하는 두 개의 거대한 탑과 정원.</li>
+                        <li class="fragment"><strong>와치라탄 폭포:</strong> 웅장한 물줄기와 무지개가 어우러진 장관.</li>
+                        <li class="fragment"><strong>카렌족 마을:</strong> 고산족의 커피 재배와 생활 방식 체험.</li>
+                    </ul>
+                    <p class="mt-4 text-sm text-blue-200 fragment">* 산 정상은 기온이 낮으니 겉옷 필수!</p>
+                </div>
+            </section>
+
+            <!-- Slide 10: Night Markets Overview -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-store mr-3"></i> [10/20] 야시장의 모든 것</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>마켓명</th>
+                                <th>운영</th>
+                                <th>특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="fragment">
+                                <td>나이트 바자</td>
+                                <td>매일</td>
+                                <td>관광객 위주, 매일 열려 접근성 좋음</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>선데이 마켓</td>
+                                <td>일요일</td>
+                                <td>최대 규모, 타패 게이트~올드시티</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>토요 마켓</td>
+                                <td>토요일</td>
+                                <td>우아라이 로드, 은 공예품 특화</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td>대학 야시장</td>
+                                <td>매일</td>
+                                <td>치앙마이대 앞, 저렴하고 힙함</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Slide 11: Saturday/Sunday Markets -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-star mr-3"></i> [11/20] 토요 & 선데이 마켓 상세</h2>
+                    <div class="flex-row">
+                        <div class="col-half border-r border-white/20 pr-4">
+                            <h4 class="text-orange-400">토요 마켓 (우아라이)</h4>
+                            <ul>
+                                <li class="text-base fragment">은 세공 거리에서 개최.</li>
+                                <li class="text-base fragment">로컬 분위기가 강함.</li>
+                                <li class="text-base fragment">길이 좁아 북적이는 맛.</li>
+                            </ul>
+                        </div>
+                        <div class="col-half pl-4">
+                            <h4 class="text-red-400">선데이 마켓</h4>
+                            <ul>
+                                <li class="text-base fragment">도시 전체가 시장으로 변신.</li>
+                                <li class="text-base fragment">예술가들의 수제 공예품 다수.</li>
+                                <li class="text-base fragment">길거리 공연과 축제 분위기.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 12: Warorot Market -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-basket-shopping mr-3"></i> [12/20] 와로롯 마켓 & 대학가</h2>
+                    <ul>
+                        <li class="fragment"><strong>와로롯 마켓:</strong> '치앙마이의 부엌'. 현지인들의 전통 시장.</li>
+                        <li class="fragment"><strong>쇼핑 품목:</strong> 건망고, 향신료, 태국 차, 라탄 제품 등 대량 구매 최적.</li>
+                        <li class="fragment"><strong>대학가 야시장:</strong> 저렴한 의류, 트렌디한 액세서리, 학생 식당급 가격의 푸드존.</li>
+                    </ul>
+                    <p class="mt-4 fragment">와로롯 마켓은 식재료 기념품을 사기에 가장 저렴하고 종류가 많습니다.</p>
+                </div>
+            </section>
+
+            <!-- Slide 13: Food -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-bowl-food mr-3"></i> [13/20] 꼭 맛봐야 할 대표 음식</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="fragment bg-white/5 p-3 rounded">
+                            <h4 class="text-xl">🍜 카오쏘이</h4>
+                            <p class="text-sm">코코넛 카레 국수. 바삭한 튀김면 토핑이 특징인 북부 대표 요리.</p>
+                        </div>
+                        <div class="fragment bg-white/5 p-3 rounded">
+                            <h4 class="text-xl">🥘 팟타이</h4>
+                            <p class="text-sm">새콤달콤한 볶음 쌀국수. 호불호 없는 태국 국민 음식.</p>
+                        </div>
+                        <div class="fragment bg-white/5 p-3 rounded">
+                            <h4 class="text-xl">🥣 똠얌꿍</h4>
+                            <p class="text-sm">매콤 시큼한 세계 3대 수프. 중독성 있는 맛.</p>
+                        </div>
+                        <div class="fragment bg-white/5 p-3 rounded">
+                            <h4 class="text-xl">🥭 망고밥</h4>
+                            <p class="text-sm">달콤한 망고와 연유 뿌린 찰밥의 디저트 조화.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 14: Michelin -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-award mr-3"></i> [14/20] 미쉐린 가이드 맛집</h2>
+                    <ul>
+                        <li class="fragment">
+                            <strong>카오쏘이 쿤 야이:</strong> 오전 재료 소진 시 마감되는 찐 로컬 맛집 (~100바트).
+                        </li>
+                        <li class="fragment">
+                            <strong>훠언 무안 짜이:</strong> 정통 란나 스타일의 가정식을 맛볼 수 있는 곳.
+                        </li>
+                        <li class="fragment">
+                            <strong>키티 파닛:</strong> 130년 고택을 개조한 품격 있는 레스토랑.
+                        </li>
+                        <li class="fragment">
+                            <strong>Tip:</strong> 유명 맛집은 구글맵 영업시간 확인 및 예약 권장.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Slide 15: Cafes 1 -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-laptop mr-3"></i> [15/20] 노마드 카페 (작업형)</h2>
+                    <ul>
+                        <li class="fragment">
+                            <strong>아카 아마 프라싱:</strong> 공정무역 원두 사용, 2층의 쾌적한 작업 공간.
+                        </li>
+                        <li class="fragment">
+                            <strong>옴브라 카페:</strong> 디지털 노마드들의 아지트, 좌석마다 콘센트 구비.
+                        </li>
+                        <li class="fragment">
+                            <strong>더반 이터리:</strong> 밤 11시까지 운영, 카공족에게 최적화된 분위기.
+                        </li>
+                    </ul>
+                    <p class="mt-4 text-green-300 fragment">치앙마이는 전 세계 노마드들의 '열린 사무실'입니다.</p>
+                </div>
+            </section>
+
+            <!-- Slide 16: Cafes 2 -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-mug-hot mr-3"></i> [16/20] 힐링 카페 (휴식형)</h2>
+                    <ul>
+                        <li class="fragment">
+                            <strong>얼리 아울:</strong> 넓은 정원과 호수, 캠핑 의자에 앉아 즐기는 여유.
+                        </li>
+                        <li class="fragment">
+                            <strong>펀 포레스트:</strong> 도심 속 숲, 울창한 나무 그늘 아래 브런치.
+                        </li>
+                        <li class="fragment">
+                            <strong>로스터리 플래그십:</strong> 님만해민 거리 뷰, 월드 라떼아트 챔피언의 커피.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Slide 17: Accommodation -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-bed mr-3"></i> [17/20] 숙소 지역 선택 가이드</h2>
+                    <div class="flex-row">
+                        <div class="col-half bg-white/5 p-4 rounded fragment">
+                            <h4 class="text-xl text-pink-400">님만해민</h4>
+                            <p class="text-base">현대적, 쇼핑몰, 예쁜 카페 밀집.<br>편리함을 추구하는 여행자.</p>
+                        </div>
+                        <div class="col-half bg-white/5 p-4 rounded fragment">
+                            <h4 class="text-xl text-orange-400">올드 시티</h4>
+                            <p class="text-base">역사 유적, 저렴한 게스트하우스.<br>치앙마이 감성과 배낭여행객.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-white/5 p-4 rounded fragment">
+                        <h4 class="text-xl text-blue-400">핑 강변</h4>
+                        <p class="text-base">고급 리조트, 리버사이드 레스토랑. 휴양과 가족 여행.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 18: Shopping Items -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-gifts mr-3"></i> [18/20] 쇼핑 리스트 & 공예품</h2>
+                    <ul>
+                        <li class="fragment"><strong>실버 제품:</strong> 우아라이 지역 장인들의 섬세한 은 공예.</li>
+                        <li class="fragment"><strong>수공예 섬유:</strong> 독특한 자수와 염색 기법의 의류, 가방.</li>
+                        <li class="fragment"><strong>라탄/목조:</strong> 자연 친화적인 인테리어 소품.</li>
+                        <li class="fragment"><strong>향신료/식품:</strong> 똠얌 페이스트, 건망고, 꿀 등 선물용.</li>
+                        <li class="fragment"><strong>뷰티/웰빙:</strong> 천연 비누, 아로마 오일, 야몽(태국 연고).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Slide 19: Itinerary -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-calendar-check mr-3"></i> [19/20] 추천 3박 4일 코스</h2>
+                    <ol class="text-base">
+                        <li class="fragment mb-3">
+                            <strong class="text-green-400">1일차 (역사):</strong> 올드 시티 사원 탐방 ➔ 타패 게이트 ➔ 나이트 바자
+                        </li>
+                        <li class="fragment mb-3">
+                            <strong class="text-green-400">2일차 (전망/현대):</strong> 도이수텝 사원 ➔ 님만해민 카페 & 쇼핑
+                        </li>
+                        <li class="fragment mb-3">
+                            <strong class="text-green-400">3일차 (자연/힐링):</strong> 코끼리 투어 or 도이 인타논 ➔ 마사지
+                        </li>
+                        <li class="fragment mb-3">
+                            <strong class="text-green-400">4일차 (예술/쇼핑):</strong> 예술 문화 센터 ➔ 와로롯 마켓 쇼핑 ➔ 귀국
+                        </li>
+                    </ol>
+                    <div class="mt-2 p-2 bg-red-500/20 rounded fragment">
+                        <p class="text-sm">※ 주말이 껴있다면 저녁 일정은 무조건 '야시장'으로!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 20: Safety & Language -->
+            <section>
+                <div class="glass-card">
+                    <h2><i class="fa-solid fa-shield-heart mr-3"></i> [20/20] 안전 및 기초 회화</h2>
+                    <div class="flex-row">
+                        <div class="col-half">
+                            <h4 class="text-xl">⚠️ 주의사항</h4>
+                            <ul class="text-base">
+                                <li>오토바이/무단횡단 주의.</li>
+                                <li>물은 반드시 생수 구입.</li>
+                                <li>사원 내 복장 및 예절 준수.</li>
+                            </ul>
+                        </div>
+                        <div class="col-half">
+                            <h4 class="text-xl">🗣️ 기초 태국어</h4>
+                            <ul class="text-base">
+                                <li>안녕하세요: <strong>사와디 캅/카</strong></li>
+                                <li>감사합니다: <strong>콥쿤 캅/카</strong></li>
+                                <li>얼마예요?: <strong>타오 라이?</strong></li>
+                                <li>화장실?: <strong>홍 남 유 나이?</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-center text-green-300 font-bold fragment">즐겁고 안전한 치앙마이 여행 되세요!</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        // Reveal.js Initialize
+        Reveal.initialize({
+            hash: true,
+            transition: 'convex', // Glass effect works well with convex or fade
+            backgroundTransition: 'fade',
+            autoPlayMedia: true,
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Chart.js Initialize when slide changes to slide 3
+        let chartInstance = null;
+
+        Reveal.on('slidechanged', event => {
+            if (event.currentSlide.getAttribute('data-state') === 'loadChart') {
+                if(chartInstance) return; // Prevent re-rendering
+                
+                const ctx = document.getElementById('weatherChart').getContext('2d');
+                chartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                        datasets: [{
+                            label: '기온 (°C)',
+                            data: [21.5, 23.9, 27.3, 29.9, 28.7, 28.1, 27.6, 27.4, 27.1, 26.4, 24.5, 21.9],
+                            type: 'line',
+                            borderColor: '#4ade80',
+                            borderWidth: 3,
+                            yAxisID: 'y',
+                        }, {
+                            label: '강수량 (mm)',
+                            data: [5, 5, 15, 57, 155, 153, 178, 216, 208, 117, 39, 15],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            yAxisID: 'y1'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { duration: 1500, easing: 'easeOutQuart' },
+                        plugins: {
+                            legend: { labels: { color: 'white', font: { size: 14 } } }
+                        },
+                        scales: {
+                            x: { ticks: { color: 'white' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+                            y: { position: 'left', ticks: { color: 'white' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+                            y1: { position: 'right', ticks: { color: 'white' }, grid: { drawOnChartArea: false } }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
