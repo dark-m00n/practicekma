@@ -66,6 +66,14 @@
         .dark .timeline-line {
             background: #4a5568;
         }
+        /* Active button style */
+        .attraction-btn.active {
+            border-color: #22c55e;
+            background-color: rgba(34, 197, 94, 0.1);
+        }
+        .dark .attraction-btn.active {
+            background-color: rgba(34, 197, 94, 0.2);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100 font-sans">
@@ -150,12 +158,10 @@
                 </section>
 
                 <!-- [3] Weather Chart (Interactive) -->
-                <!-- 수정됨: Chart Container에 높이 제한 추가 -->
                 <section id="planning" class="mb-12">
                     <h2 class="text-2xl font-bold mb-4 flex items-center"><i class="fa-solid fa-cloud-sun-rain mr-3 text-brand-DEFAULT"></i> 여행 시기와 기후</h2>
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                         <div class="flex flex-col md:flex-row">
-                            <!-- 차트 영역: relative 및 높이(h-72) 지정하여 무한 증식 방지 -->
                             <div class="md:w-2/3 pr-0 md:pr-6 mb-6 md:mb-0">
                                 <h4 class="text-lg font-semibold mb-2">월별 기온 및 강수량</h4>
                                 <div class="relative w-full h-72">
@@ -244,55 +250,57 @@
                     </div>
                 </section>
 
-                <!-- [6-9] Attractions (Temples & Nature) -->
+                <!-- [6-9] Attractions (INTERACTIVE SECTION) -->
                 <section id="attractions" class="mb-12">
                     <h2 class="text-3xl font-bold mb-6 text-brand-dark dark:text-brand-light">주요 명소 탐방</h2>
                     
-                    <!-- Accordion for Temples -->
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-6">
-                        <div class="p-4 bg-brand-DEFAULT text-white font-bold flex justify-between cursor-pointer" onclick="toggleAccordion('temple-accordion')">
-                            <span><i class="fa-solid fa-place-of-worship mr-2"></i>올드 시티 3대 사원 & 도이수텝</span>
-                            <i class="fa-solid fa-chevron-down transition-transform" id="temple-accordion-icon"></i>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-6 p-6">
+                        <p class="text-sm text-gray-500 mb-4 text-center dark:text-gray-400"><i class="fa-solid fa-arrow-pointer animate-bounce mr-2"></i>아래 버튼을 클릭하여 명소 정보를 확인하세요.</p>
+                        
+                        <!-- Attraction Selector Buttons -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                            <button onclick="changeAttraction('chedi')" id="btn-chedi" class="attraction-btn active border-2 border-transparent p-4 rounded text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-300">
+                                <h4 class="font-bold text-lg mb-1 text-brand-DEFAULT">왓 체디 루앙</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">거대한 불탑의 자취가 남은 웅장한 사원</p>
+                            </button>
+                            <button onclick="changeAttraction('phrasingh')" id="btn-phrasingh" class="attraction-btn border-2 border-transparent p-4 rounded text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-300">
+                                <h4 class="font-bold text-lg mb-1 text-brand-DEFAULT">왓 프라씽</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">화려한 황금빛 사원과 정원의 조화</p>
+                            </button>
+                            <button onclick="changeAttraction('chiangman')" id="btn-chiangman" class="attraction-btn border-2 border-transparent p-4 rounded text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-300">
+                                <h4 class="font-bold text-lg mb-1 text-brand-DEFAULT">왓 치앙만</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">가장 오래된 사원과 코끼리 사리탑</p>
+                            </button>
+                            <button onclick="changeAttraction('doisuthep')" id="btn-doisuthep" class="attraction-btn border-2 border-transparent p-4 rounded text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-300">
+                                <h4 class="font-bold text-lg mb-1 text-brand-DEFAULT">도이수텝</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">치앙마이가 한눈에 보이는 황금 사원</p>
+                            </button>
+                            <button onclick="changeAttraction('inthanon')" id="btn-inthanon" class="attraction-btn border-2 border-transparent p-4 rounded text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-300 md:col-span-2 lg:col-span-4 flex items-center justify-center bg-gray-50 dark:bg-gray-700">
+                                <div>
+                                    <h4 class="font-bold text-lg text-center text-blue-600 dark:text-blue-400"><i class="fa-solid fa-mountain mr-2"></i>도이 인타논 국립공원</h4>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 text-center">태국 최고봉과 자연 트레킹</p>
+                                </div>
+                            </button>
                         </div>
-                        <div id="temple-accordion" class="hidden p-6 transition-all duration-300">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="border p-4 rounded dark:border-gray-700">
-                                    <h4 class="font-bold text-lg mb-2">왓 체디 루앙</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-300">거대한 불탑의 자취가 남은 웅장한 사원. 일부 유실되었으나 압도적인 건축미를 자랑합니다.</p>
-                                </div>
-                                <div class="border p-4 rounded dark:border-gray-700">
-                                    <h4 class="font-bold text-lg mb-2">왓 프라씽</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-300">화려한 황금빛 사원과 정원이 조화를 이룸. 란나 건축 양식의 정수를 보여줍니다.</p>
-                                </div>
-                                <div class="border p-4 rounded dark:border-gray-700">
-                                    <h4 class="font-bold text-lg mb-2">왓 치앙만</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-300">치앙마이에서 가장 오래된 사원. 코끼리 조각이 받치고 있는 사리탑이 유명합니다.</p>
-                                </div>
-                                <div class="border p-4 rounded bg-yellow-50 dark:bg-yellow-900/20 dark:border-yellow-700">
-                                    <h4 class="font-bold text-lg mb-2 text-yellow-800 dark:text-yellow-400">도이수텝 (필수 코스)</h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-300">해발 1,676m 산 정상의 황금 사원. 309개 계단을 오르면 치앙마이 시내가 한눈에 보입니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Doi Inthanon Card -->
-                    <div class="relative rounded-lg overflow-hidden shadow-xl h-64 md:h-80 group">
-                        <img src="https://images.unsplash.com/photo-1590422613586-fa6374f67d4e?q=80&w=1200&auto=format&fit=crop" alt="Doi Inthanon" class="w-full h-full object-cover transition transform group-hover:scale-110 duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">도이 인타논 국립공원</h3>
-                            <p class="text-gray-200 text-sm md:text-base line-clamp-2">태국의 지붕이라 불리는 해발 2,565m 최고봉. 웅장한 와치라탄 폭포와 왕/왕비 장수 기념탑, 카렌족 마을 체험까지 자연 속 힐링을 선사합니다.</p>
+                        <!-- Dynamic Display Card -->
+                        <div class="relative rounded-lg overflow-hidden shadow-xl h-80 md:h-96 group">
+                            <img id="attraction-img" src="https://images.unsplash.com/photo-1587033503862-e1c8d8b92b6c?q=80&w=1200&auto=format&fit=crop" alt="Attraction Image" class="w-full h-full object-cover transition-opacity duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
+                                <h3 id="attraction-title" class="text-3xl font-bold text-white mb-3">왓 체디 루앙 (Wat Chedi Luang)</h3>
+                                <p id="attraction-desc" class="text-gray-100 text-sm md:text-base leading-relaxed">
+                                    ‘크다’는 뜻의 이름답게 과거 거대한 불탑의 자취가 남아 있으며, 현재 일부가 유실되었음에도 불구하고 그 압도적인 건축미는 치앙마이에서 가장 상징적인 볼거리로 손꼽힘.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- [10-12] Markets & Shopping (Radar Chart) -->
-                <!-- 수정됨: Chart Container에 높이 제한 추가 -->
                 <section id="shopping" class="mb-12">
                     <h2 class="text-2xl font-bold mb-4">야시장 분석 및 쇼핑</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
-                            <!-- 차트 영역 제한 -->
                             <div class="relative w-full h-64">
                                 <canvas id="marketRadarChart"></canvas>
                             </div>
@@ -585,17 +593,50 @@
             document.querySelector('aside').classList.toggle('h-full');
         });
 
-        // 4. Accordion Logic
-        function toggleAccordion(id) {
-            const element = document.getElementById(id);
-            const icon = document.getElementById(id + '-icon');
-            if (element.classList.contains('hidden')) {
-                element.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                element.classList.add('hidden');
-                icon.classList.remove('rotate-180');
+        // 4. Attraction Interactive Logic (New!)
+        const attractionData = {
+            'chedi': {
+                title: '왓 체디 루앙 (Wat Chedi Luang)',
+                desc: '‘크다’는 뜻의 이름답게 과거 거대한 불탑의 자취가 남아 있으며, 현재 일부가 유실되었음에도 불구하고 그 압도적인 건축미는 치앙마이에서 가장 상징적인 볼거리로 손꼽힙니다.',
+                img: 'https://images.unsplash.com/photo-1587033503862-e1c8d8b92b6c?q=80&w=1200&auto=format&fit=crop'
+            },
+            'phrasingh': {
+                title: '왓 프라씽 (Wat Phra Singh)',
+                desc: '햇빛에 반짝이는 황금 사원과 잘 가꾸어진 초록빛 정원이 조화를 이루어 란나 건축 양식의 정수를 보여줍니다. 치앙마이에서 가장 추앙받는 불상이 모셔져 있습니다.',
+                img: 'https://images.unsplash.com/photo-1563725801262-d2906e409c31?q=80&w=1200&auto=format&fit=crop'
+            },
+            'chiangman': {
+                title: '왓 치앙만 (Wat Chiang Man)',
+                desc: '치앙마이 설립 당시 최초로 건립된 사원입니다. 코끼리들이 탑을 받치고 있는 형태의 황금색 사리탑(체디)이 유명하며, 조용한 분위기 속에서 산책하기 좋습니다.',
+                img: 'https://images.unsplash.com/photo-1583253757697-393c00445e99?q=80&w=1200&auto=format&fit=crop'
+            },
+            'doisuthep': {
+                title: '왓 프라탓 도이수텝 (Doi Suthep)',
+                desc: '해발 1,676m 산 정상에 위치한 영험한 공간. 309개의 계단을 올라가면 황금빛 탑과 함께 치앙마이 시내 전경이 한눈에 들어오는 최고의 명소입니다.',
+                img: 'https://images.unsplash.com/photo-1594220793676-e260938f36c5?q=80&w=1200&auto=format&fit=crop'
+            },
+            'inthanon': {
+                title: '도이 인타논 국립공원 (Doi Inthanon)',
+                desc: '태국의 지붕이라 불리는 해발 2,565m 최고봉. 웅장한 와치라탄 폭포와 왕/왕비 장수 기념탑, 카렌족 마을 체험까지 자연 속 힐링을 선사합니다.',
+                img: 'https://images.unsplash.com/photo-1598935858831-ef7883259dd1?q=80&w=1200&auto=format&fit=crop'
             }
+        };
+
+        function changeAttraction(key) {
+            const data = attractionData[key];
+            if(!data) return;
+
+            // Update Content
+            document.getElementById('attraction-title').innerText = data.title;
+            document.getElementById('attraction-desc').innerText = data.desc;
+            document.getElementById('attraction-img').src = data.img;
+
+            // Update Button Styles
+            const buttons = document.querySelectorAll('.attraction-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + key).classList.add('active');
         }
 
         // 5. Tab Logic
