@@ -3,57 +3,75 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>생성형 AI 소개</title>
-  <style>
-    body {font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial; margin:0; padding:0; color:#111; background:#f7fafc}
-    header {background:#0f172a; color:#fff; padding:2rem; text-align:center}
-    .container {max-width:900px; margin:2rem auto; padding:1rem}
-    h1{margin:0 0 .5rem}
-    section{margin:1.5rem 0; padding:1rem; background:#fff; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.06)}
-    ul{margin:0 0 0 1.2rem}
-    footer{text-align:center; color:#6b7280; margin:2rem 0}
-    a{color:#0ea5a4}
-    @media(max-width:600px){.container{margin:1rem;padding:.8rem}}
-  </style>
+  <title>GenAI 학습: 미래를 탐험하세요</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>생성형 인공지능(Generative AI) 소개</h1>
-    <p>간단한 정의와 활용, 한계를 정리한 소개 페이지</p>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="#">GenAI<span class="dot">.</span></a>
+      <nav class="nav-links">
+        <a href="#about">소개</a>
+        <a href="#features">특징</a>
+        <a href="#resources">자료</a>
+      </nav>
+      <div class="controls">
+        <button id="theme-toggle" aria-label="토글 테마">🌗</button>
+      </div>
+    </div>
   </header>
-  <main class="container">
-    <section>
-      <h2>정의</h2>
-      <p>생성형 AI는 텍스트, 이미지, 음악, 코드 등 다양한 형태의 콘텐츠를 새롭게 만들어내는 인공지능 기술입니다.</p>
+
+  <main>
+    <section class="hero">
+      <canvas id="bg-canvas"></canvas>
+      <div class="hero-content glass">
+        <h1>GenAI의 미래를 탐험하세요</h1>
+        <p class="lead">생성형 AI의 원리, 활용, 최신 트렌드를 인터랙티브한 시각 경험과 함께 학습하세요.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#features">학습 시작</a>
+          <a class="btn ghost" href="#resources">심화 자료</a>
+        </div>
+      </div>
     </section>
-    <section>
-      <h2>작동 원리(간단히)</h2>
-      <p>대규모 데이터로 학습한 모델이 패턴을 이해하고, 입력(prompt)에 따라 확률적으로 다음 토큰을 생성하는 방식입니다. 대표적 모델로는 트랜스포머 계열 모델이 있습니다.</p>
+
+    <section id="about" class="section container glass">
+      <h2>생성형 AI란?</h2>
+      <p>생성형 AI는 텍스트, 이미지, 오디오, 코드 등 다양한 형태의 콘텐츠를 새롭게 만들어내는 모델군입니다. 트랜스포머 기반의 대형 언어/멀티모달 모델이 대표적입니다.</p>
     </section>
-    <section>
-      <h2>활용 사례</h2>
+
+    <section id="features" class="section container">
+      <h2>핵심 특징</h2>
+      <div class="cards">
+        <article class="card glass">
+          <h3>창의적 생성</h3>
+          <p>아이디어, 이미지, 음악 등을 자동으로 생성하여 창작을 보조합니다.</p>
+        </article>
+        <article class="card glass">
+          <h3>대화형 학습</h3>
+          <p>대화형 인터페이스로 학습, 문제 해결, 코드 보조가 가능합니다.</p>
+        </article>
+        <article class="card glass">
+          <h3>응용성</h3>
+          <p>콘텐츠 제작, 자동화, 개인화 서비스 등 다양한 분야에 활용됩니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources" class="section container glass">
+      <h2>자료 및 더 알아보기</h2>
       <ul>
-        <li>챗봇 및 고객 지원</li>
-        <li>이미지·영상 생성 및 편집</li>
-        <li>문서 요약, 번역, 콘텐츠 제작</li>
-        <li>코드 보완 및 자동생성</li>
+        <li>책: 최신 연구개요 및 응용 사례</li>
+        <li>온라인 코스: 모델 설계와 프롬프트 엔지니어링</li>
+        <li>윤리: 책임 있는 AI 사용 가이드</li>
       </ul>
     </section>
-    <section>
-      <h2>장점과 한계</h2>
-      <ul>
-        <li><strong>장점:</strong> 창의적 콘텐츠 생성, 생산성 향상</li>
-        <li><strong>한계:</strong> 잘못된 정보 생성(환각), 편향, 저작권/윤리 문제</li>
-      </ul>
-    </section>
-    <section>
-      <h2>안전과 윤리</h2>
-      <p>출처 표기, 사실 검증, 편향 완화, 사용자 프라이버시 보호 등 책임 있는 사용이 필요합니다.</p>
-    </section>
-    <footer>
-      <p>더 알아보기: <a href="https://ko.wikipedia.org/wiki/%EC%83%9D%EC%84%B1%EC%A0%81_%EC%A0%81%EB%8C%80_%EC%8B%A0%EA%B2%A9%EB%A7%9D" target="_blank" rel="noopener">위키피디아(생성적 모델)</a></p>
-      <p>작성: 간단한 예시 페이지</p>
+
+    <footer class="site-footer">
+      <p>© 2025 GenAI 학습 사이트 — Futuristic Dark Mode 디자인 데모</p>
     </footer>
   </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
