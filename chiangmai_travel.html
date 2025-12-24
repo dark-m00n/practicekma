@@ -300,8 +300,8 @@
 
                         <!-- Dynamic Display Card -->
                         <div class="relative rounded-lg overflow-hidden shadow-xl h-80 md:h-96 group">
-                            <!-- [수정됨] 초기 로딩 이미지 (왓 체디 루앙 정면) -->
-                            <img id="attraction-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Wat_Chedi_Luang_Worawihan_05.jpg/1200px-Wat_Chedi_Luang_Worawihan_05.jpg" alt="Attraction Image" class="w-full h-full object-cover transition-opacity duration-500">
+                            <!-- [수정됨] 안정적인 Unsplash 이미지 URL 사용 -->
+                            <img id="attraction-img" src="https://images.unsplash.com/photo-1599547604364-59365e49c7f6?q=80&w=1200&auto=format&fit=crop" alt="Attraction Image" class="w-full h-full object-cover transition-opacity duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8">
                                 <h3 id="attraction-title" class="text-3xl font-bold text-white mb-3">왓 체디 루앙 (Wat Chedi Luang)</h3>
                                 <p id="attraction-desc" class="text-gray-100 text-sm md:text-base leading-relaxed">
@@ -379,7 +379,7 @@
                         </div>
                     </div>
 
-                    <!-- [수정됨] Tab Content: Michelin (Clickable Map) -->
+                    <!-- Tab Content: Michelin (Clickable Map) -->
                     <div id="michelin" class="tab-content hidden animate-fade-in">
                         <p class="text-xs text-gray-500 mb-2 text-right"><i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i>리스트를 클릭하면 지도가 열립니다</p>
                         <ul class="space-y-2">
@@ -413,7 +413,7 @@
                         </ul>
                     </div>
 
-                    <!-- [수정됨] Tab Content: Cafe (Clickable Map) -->
+                    <!-- Tab Content: Cafe (Clickable Map) -->
                     <div id="cafe" class="tab-content hidden animate-fade-in">
                         <p class="text-xs text-gray-500 mb-2 text-right"><i class="fa-solid fa-hand-pointer animate-pulse mr-1"></i>카페를 클릭하면 지도가 열립니다</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -598,7 +598,7 @@
             </main>
         </div>
 
-        <!-- [추가됨] Map Modal HTML -->
+        <!-- Map Modal HTML -->
         <div id="mapModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
             <div class="bg-white dark:bg-gray-800 w-full max-w-4xl h-[80vh] rounded-lg shadow-2xl relative flex flex-col modal-enter">
                 <!-- Header -->
@@ -609,7 +609,6 @@
                 <!-- Iframe Container -->
                 <div class="flex-1 bg-gray-200 relative">
                     <iframe id="mapFrame" class="w-full h-full border-0" allowfullscreen loading="lazy"></iframe>
-                    <!-- Loading Spinner (Hidden by default, can be added if needed) -->
                 </div>
                 <!-- Footer -->
                 <div class="p-3 bg-gray-50 dark:bg-gray-900 text-right">
@@ -677,8 +676,8 @@
             'chedi': {
                 title: '왓 체디 루앙 (Wat Chedi Luang)',
                 desc: '‘크다’는 뜻의 이름답게 과거 거대한 불탑의 자취가 남아 있으며, 현재 일부가 유실되었음에도 불구하고 그 압도적인 건축미는 치앙마이에서 가장 상징적인 볼거리로 손꼽힙니다.',
-                // [수정됨] 사용자 제공 이미지와 유사한 고화질 정면 사진 URL
-                img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Wat_Chedi_Luang_Worawihan_05.jpg/1200px-Wat_Chedi_Luang_Worawihan_05.jpg'
+                // [수정됨] 안정적인 Unsplash 이미지
+                img: 'https://images.unsplash.com/photo-1599547604364-59365e49c7f6?q=80&w=1200&auto=format&fit=crop'
             },
             'phrasingh': {
                 title: '왓 프라씽 (Wat Phra Singh)',
@@ -758,7 +757,7 @@
             }
         });
 
-        // 7. [추가됨] Google Map Modal Logic
+        // 7. Google Map Modal Logic
         function openMap(placeName) {
             const modal = document.getElementById('mapModal');
             const iframe = document.getElementById('mapFrame');
